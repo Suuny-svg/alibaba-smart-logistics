@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>欢迎来到我的网站</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "微软雅黑", sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    }
+
+
+    h1 {
+      color: #6a0dad;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🌸 欢迎来到我的小天地 🌸</h1>
+    <p>这里是一个由 HTML + CSS 打造的温馨网页～</p>
+<!-- Section: 可视化图表嵌入 -->
+<section class="mb-12">
+  <h2 class="section-title">数据可视化图表展示</h2>
+  <div class="p-6" style="background: none; box-shadow: none;">
+    <!-- 可视化容器，无背景 -->
+    <div id="chartContainer" style="background: transparent; width: 100%; height: 400px;"></div>
+  </div>
+</section>
+
+<!-- 引入 ECharts 脚本（可视化库） -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script>
+  // 初始化图表
+  const chartDom = document.getElementById('chartContainer');
+  const myChart = echarts.init(chartDom, null, {
+    renderer: 'canvas',
+    backgroundColor: 'transparent' // 关键设置：无背景
+  });
+
+  const option = {
+    title: {
+      text: '智能物流核心数据概览',
+      left: 'center',
+      textStyle: {
+        color: '#2a4365',
+        fontSize: 20,
+        fontWeight: 700
+      }
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: 'category',
+      data: ['AI 预测准确率提升', '仓储自动化提升', '分拣效率提升', '路径规划节省', '终端派送优化'],
+      axisLabel: {
+        interval: 0,
+        rotate: 40,
+        color: '#2d3748',
+        fontSize: 12
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        color: '#4a5568'
+      }
+    },
+    series: [
+      {
+        data: [35, 25, 20, 10, 10],
+        type: 'bar',
+        barWidth: '50%',
+        itemStyle: {
+          color: '#6366f1',
+          borderRadius: [8, 8, 0, 0]
+        },
+        label: {
+          show: true,
+          position: 'top',
+          color: '#2d3748',
+          fontWeight: 'bold'
+        }
+      }
+    ]
+  };
+
+  myChart.setOption(option);
+</script>
+  </div>
+</body>
+</html>
